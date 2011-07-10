@@ -1,6 +1,8 @@
 module Clickatell
   # This module provides the core implementation of the Clickatell
   # HTTP service.
+  GSM_MAP = /[^@£$¥èéùìòÇØøÅåΔ_ΦΓΛΩΠΨΣΘΞ^{}\[\]~|€ÆæßÉ!"#¤%&'()*+,-.\/\\0123456789:;<=>?¡ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÑÜ§¿abcdefghijklmnopqrstuvwxyzäöñüà ]/
+
   class API
     attr_accessor :auth_options
     
@@ -175,7 +177,7 @@ module Clickatell
       end
 
       def extended_chars_in_message?(message_text)
-        true if message_text.unpack("U*").detect {|c| c > 127}
+        message_text =~ GSM_MAP
       end
 
       def message_as_unicode(message_text)

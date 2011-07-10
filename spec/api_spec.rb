@@ -206,7 +206,7 @@ module Clickatell
       proc { @api.account_balance }.should raise_error(Clickatell::API::Error)
     end
 
-    describe "when sending a message whit extended ASCII chars" do
+    describe "when sending a message whit non GSM chars" do
       it "should set the unicode flag" do
         @executor.expects(:execute).with('sendmsg', 'http', has_entry(:unicode => 1)).returns(response=mock('response'))
         Response.stubs(:parse).with(response).returns('ID' => 'message_id')
@@ -226,7 +226,7 @@ module Clickatell
       end
     end
 
-    describe "when sending a message without extended ASCII chars" do
+    describe "when sending a message with only GSM chars" do
       it "should not set the unicode flag" do
         @executor.expects(:execute).with('sendmsg', 'http', Not(has_entry(:unicode => 1))).returns(response=mock('response'))
         Response.stubs(:parse).with(response).returns('ID' => 'message_id')
