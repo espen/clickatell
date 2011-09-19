@@ -1,8 +1,7 @@
 module Clickatell
   # This module provides the core implementation of the Clickatell
   # HTTP service.
-  GSM_MAP = /[^@£$¥èéùìòÇØøÅåΔ_ΦΓΛΩΠΨΣΘΞ^{}\[\]~|€ÆæßÉ!"#¤%&'()*+,-.\/\\0123456789:;<=>?¡ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÑÜ§¿abcdefghijklmnopqrstuvwxyzäöñüà ]/
-
+  GSM_MAP = /[^@£$¥èéùìòÇØøÅåΔ_ΦΓΛΩΠΨΣΘΞ^{}\[\]~|€ÆæßÉ!"#¤%&'()*+,-.\/\\0123456789:;<=>?¡ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÑÜ§¿abcdefghijklmnopqrstuvwxyzäöñüà\n ]/
   class API
     attr_accessor :auth_options
     
